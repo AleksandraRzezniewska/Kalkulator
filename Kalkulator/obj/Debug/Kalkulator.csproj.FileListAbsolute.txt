@@ -1,0 +1,10 @@
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.MainPanel.resources
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.Properties.Resources.resources
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.GenerateResource.cache
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csproj.CoreCompileInputs.cache
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\bin\Debug\Kalkulator.exe.config
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\bin\Debug\Kalkulator.exe
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\bin\Debug\Kalkulator.pdb
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.exe
+c:\users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.pdb
+C:\Users\orzez\source\repos\Kalkulator\Kalkulator\obj\Debug\Kalkulator.csprojAssemblyReference.cache
