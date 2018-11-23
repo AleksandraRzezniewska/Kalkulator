@@ -17,12 +17,14 @@ namespace Kalkulator
         private static string Znak = "";
         private static bool _click = false; // naciskanie pozostałych znaków
         private static bool _click2 = false; //czy = było naciśnięte
+        private static bool _click3 = false; 
         private static double wynik = 0;
-        private static double wynik1 = 0;
-
+        
+      
+    
         public MainPanel()
         {
-            InitializeComponent(); ; ; ; ; ; ;
+            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,19 +36,37 @@ namespace Kalkulator
         {
             if (_click)
             {
-                if (_click2)
+                if (Liczba != "")
                 {
-                    wynik = Functionality.Equals(Znak, Liczba, Liczba2);
-                    Wynik.Text = wynik.ToString();
-                    _click = true;
-                    
+                    if (_click2)
+                    {
+                        if (_click3)
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);
+                            Wynik.Text = wynik.ToString();
+                            Liczba2 = "";
+                            Liczba = "";
+                            _click = false;
+                            _click3 = false;
+                        }
+                        else
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);
+                            Wynik.Text = wynik.ToString();
+                            _click = true;
+                        }
+                    }
+                    else
+                    {
+                        wynik = Functionality.Equals(Znak, Liczba, Liczba2);
+                        Wynik.Text = wynik.ToString();
+                        Liczba2 = wynik.ToString();
+                        Liczba = "";
+                        _click = false;
+                    }
                 }
                 else
                 {
-                    wynik = Functionality.Equals(Znak, Liczba, Liczba2);
-                    Wynik.Text = wynik.ToString();
-                    Liczba2 = wynik.ToString();
-                    Liczba = "";
                     _click = false;
                 }
             }
@@ -56,10 +76,21 @@ namespace Kalkulator
                 {
                     if (_click2)
                     {
-                        wynik = Functionality.Equals(Znak, Liczba2, Liczba);
-                        Wynik.Text = wynik.ToString();
-                        _click = false;
-
+                        if (_click3)
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);
+                            Wynik.Text = wynik.ToString();
+                            Liczba = "";
+                            Liczba2 = "";
+                            _click = false;
+                            _click3 = false;
+                        }
+                        else
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);
+                            Wynik.Text = wynik.ToString();
+                            _click = false;
+                        }
                     }
                     else
                     {
@@ -93,6 +124,7 @@ namespace Kalkulator
 
         private void Jeden_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "1";
@@ -100,15 +132,16 @@ namespace Kalkulator
             }
             else
             {
-
                 Liczba = Liczba + "1";
                 Wynik.Text = Liczba;
             }
-            
+           
+           
         }
 
         private void Dwa_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "2";
@@ -125,6 +158,7 @@ namespace Kalkulator
 
         private void Trzy_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "3";
@@ -141,6 +175,7 @@ namespace Kalkulator
 
         private void Cztery_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "4";
@@ -157,6 +192,7 @@ namespace Kalkulator
 
         private void Piec_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "5";
@@ -173,6 +209,7 @@ namespace Kalkulator
 
         private void Szesc_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "6";
@@ -189,6 +226,7 @@ namespace Kalkulator
 
         private void Siedem_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "7";
@@ -205,6 +243,7 @@ namespace Kalkulator
 
         private void Osiem_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "8";
@@ -221,6 +260,7 @@ namespace Kalkulator
 
         private void Dziewiec_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "9";
@@ -233,10 +273,12 @@ namespace Kalkulator
                 Wynik.Text = Liczba;
             }
            
+           
         }
 
         private void Zero_Click(object sender, EventArgs e)
         {
+            _click3 = true;
             if (_click)
             {
                 Liczba2 = Liczba2 + "0";
@@ -248,33 +290,40 @@ namespace Kalkulator
                 Liczba = Liczba + "0";
                 Wynik.Text = Liczba;
             }
-           
         }
 
         private void Rownosc_Click(object sender, EventArgs e)
         {
             _click2 = true;
+            
             Operacje(Znak);
-            _click2 = false;
         }
 
         private void Mnozenie_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("*");
         }
 
         private void Dodawanie_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("+");
         }
 
         private void Odejmowanie_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("-");
         }
 
         private void Dzielenie_Click(object sender, EventArgs e)
         {
+            _click3 = false;
+            _click2 = false;
             Operacje("/");
         }
 
@@ -307,18 +356,24 @@ namespace Kalkulator
 
         private void Potegowanie_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("^");
-            // zrobić tak żeby po naciśnieciu przycisku od razu pojawiał się wynik
+           
         }
 
         private void Procenty_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("%");
-            // zrobić tak żeby po naciśnieciu przycisku od razu pojawiał się wynik
+           
         }
 
         private void Pierwiastek_Click(object sender, EventArgs e)
         {
+            _click2 = false;
+            _click3 = false;
             Operacje("//");
         }
     }
