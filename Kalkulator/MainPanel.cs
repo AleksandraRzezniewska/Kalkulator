@@ -17,7 +17,8 @@ namespace Kalkulator
         private static string Znak = "";
         private static bool _click = false; // naciskanie pozostałych znaków
         private static bool _click2 = false; //czy = było naciśnięte
-        private static bool _click3 = false; 
+        private static bool _click3 = false;
+        private static bool _click4 = false; //pierwiastek, potęgowanie, procenty
         private static double wynik = 0;
         
       
@@ -44,25 +45,35 @@ namespace Kalkulator
                         {
                             wynik = Functionality.Equals(Znak, Liczba, Liczba2);
                             Wynik.Text = wynik.ToString();
-                            Liczba2 = "";
+                            Liczba2 = "";                              //jeśli po naciśnięciu "=" naciśniemy jakąś liczbę 
                             Liczba = "";
                             _click = false;
                             _click3 = false;
                         }
                         else
                         {
-                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);
+                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);  //jak naciśniemy "="
                             Wynik.Text = wynik.ToString();
                             _click = true;
                         }
                     }
                     else
                     {
-                        wynik = Functionality.Equals(Znak, Liczba, Liczba2);
-                        Wynik.Text = wynik.ToString();
-                        Liczba2 = wynik.ToString();
-                        Liczba = "";
-                        _click = false;
+                        if (_click4)
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);  //oblicza pierwiastek, potęgowanie i procenty
+                            Wynik.Text = wynik.ToString();
+                            
+                        }
+                        else
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba, Liczba2);   
+                            Wynik.Text = wynik.ToString();
+                            Liczba2 = wynik.ToString();
+                            Liczba = "";
+                            _click = false;
+                        }
+                        
                     }
                 }
                 else
@@ -78,7 +89,7 @@ namespace Kalkulator
                     {
                         if (_click3)
                         {
-                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);  //jak naciśniemy "=" a zaraz po tym liczbe
                             Wynik.Text = wynik.ToString();
                             Liczba = "";
                             Liczba2 = "";
@@ -87,18 +98,27 @@ namespace Kalkulator
                         }
                         else
                         {
-                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba); //po naciśnięciu "="
                             Wynik.Text = wynik.ToString();
                             _click = false;
                         }
                     }
                     else
                     {
-                        wynik = Functionality.Equals(Znak, Liczba2, Liczba);
-                        Wynik.Text = wynik.ToString();
-                        Liczba = wynik.ToString();
-                        Liczba2 = "";
-                        _click = true;
+                        if (_click4)
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba); //oblicza pierwiastek
+                            Wynik.Text = wynik.ToString();
+                           
+                        }
+                        else
+                        {
+                            wynik = Functionality.Equals(Znak, Liczba2, Liczba);
+                            Wynik.Text = wynik.ToString();
+                            Liczba = wynik.ToString();
+                            Liczba2 = "";
+                            _click = true;
+                        }
                     }
                 }
                 else
@@ -358,7 +378,11 @@ namespace Kalkulator
         {
             _click2 = false;
             _click3 = false;
+
             Operacje("^");
+            _click4 = true;
+            Operacje("^");
+            _click4 = false;
            
         }
 
@@ -366,7 +390,11 @@ namespace Kalkulator
         {
             _click2 = false;
             _click3 = false;
+
             Operacje("%");
+            _click4 = true;
+            Operacje("%");
+            _click4 = false;
            
         }
 
@@ -374,7 +402,11 @@ namespace Kalkulator
         {
             _click2 = false;
             _click3 = false;
+
             Operacje("//");
+            _click4 = true;
+            Operacje("//");
+            _click4 = false;
         }
     }
 }
